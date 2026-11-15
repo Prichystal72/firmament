@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>FIRMAMENT!</title>
+<link rel="icon" href="data:,">
+<!-- vse lokalne ve vendor/ (nastroje/stahni_knihovny.py): Discord v aktivite cizi servery blokuje -->
+<link rel="stylesheet" href="vendor/pismo/pismo.css">
+<link rel="stylesheet" href="styl.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="hra"></div>
+
+<div id="hud">
+  <div class="blok"><span class="popis">SKÓRE</span><span id="skore">0</span></div>
+  <div class="blok"><span class="popis">REKORD</span><span id="rekord">0</span></div>
+  <div class="blok"><span class="popis">VLNA <span id="vlna">1</span></span><span id="zivoty"></span></div>
+</div>
+
+<div id="zprava" class="skryte"></div>
+
+<!-- tlacitka jen pro dotykove displeje -->
+<div id="tlacitka">
+  <button data-kod="KeyP" aria-label="Pauza">❚❚</button>
+  <button data-kod="KeyM" aria-label="Hudba">♪</button>
+  <button data-kod="KeyR" aria-label="Vysílačka">📻</button>
+  <button data-kod="KeyV" aria-label="Pohled">👁</button>
+</div>
+<div id="otoc">Otoč telefon na šířku</div>
+
+<div id="titul" class="overlay">
+  <h1>FIRMAMENT!</h1>
+  <p class="podtitul">Braň kupoli před kulatozemci</p>
+  <p id="vyzva" class="blika">Stiskni libovolnou klávesu</p>
+  <p class="ovladani dotyk">Táhni prstem = pohyb · drž prst = střelba</p>
+  <p class="ovladani klavesy">← → / A D pohyb · MEZERNÍK střelba · P pauza · M hudba · R vysílačka · V pohled · F celá obrazovka · gamepad</p>
+</div>
+
+<div id="konec" class="overlay skryte">
+  <h2>KONEC HRY</h2>
+  <p id="konecSkore"></p>
+  <p id="konecVyzva" class="blika">ENTER = znovu</p>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

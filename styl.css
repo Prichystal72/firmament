@@ -1,0 +1,65 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #020008; }
+body { font-family: 'Press Start 2P', monospace; color: #fff; user-select: none; }
+#hra canvas { display: block; }
+
+#hud {
+  position: fixed; top: 14px; left: 24px; right: 24px;
+  display: flex; justify-content: space-between; pointer-events: none;
+}
+.blok { display: flex; flex-direction: column; gap: 8px; font-size: 18px;
+  text-shadow: 0 0 6px #29d8ff, 0 0 14px #29d8ff; }
+.blok:last-child { text-align: right; }
+.popis { font-size: 11px; color: #ff6ad5; text-shadow: 0 0 6px #ff2bd6; }
+#zivoty { color: #b6ff2e; text-shadow: 0 0 8px #6bff3a; letter-spacing: 6px; }
+
+#zprava {
+  position: fixed; top: 42%; width: 100%; text-align: center; font-size: 34px;
+  color: #ffe14a; text-shadow: 0 0 10px #ff9a1a, 0 0 26px #ff2bd6; pointer-events: none;
+}
+
+.overlay {
+  position: fixed; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 22px; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(5,1,15,0.15), rgba(5,1,15,0.7));
+}
+h1 {
+  margin: 0; font-size: 9vw; letter-spacing: 0.04em;
+  background: linear-gradient(#f4ff7a, #8dff1e 55%, #2fa800);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 6px #6bff3a) drop-shadow(0 6px 0 #1d5a00) drop-shadow(0 0 30px #ff2bd6);
+  transform: perspective(600px) rotateX(14deg);
+  animation: pulz 2.4s ease-in-out infinite;
+}
+h2 { margin: 0; font-size: 48px; color: #ff3f6a; text-shadow: 0 0 12px #ff1e3c, 0 0 30px #ff2bd6; }
+.overlay p { margin: 0; font-size: 16px; text-shadow: 0 0 8px #29d8ff; }
+.podtitul { font-size: 14px !important; color: #a8e8ff; text-shadow: 0 0 8px #3aa0ff !important; }
+.ovladani { font-size: 11px !important; color: #c9a8ff; }
+.blika { animation: blik 1.1s steps(2) infinite; }
+.skryte { display: none !important; }
+
+@keyframes pulz { 50% { filter: drop-shadow(0 0 10px #b6ff2e) drop-shadow(0 6px 0 #1d5a00) drop-shadow(0 0 44px #ff2bd6); } }
+@keyframes blik { 50% { opacity: 0.25; } }
+
+/* Mobil: bez posouvani a zoomu stranky, tlacitka nahore, mensi HUD */
+html, body { touch-action: none; overscroll-behavior: none; -webkit-user-select: none; }
+#tlacitka { display: none; position: fixed; top: max(64px, env(safe-area-inset-top)); right: 12px;
+  flex-direction: column; gap: 10px; z-index: 5; }
+#tlacitka button { width: 46px; height: 46px; border-radius: 7px; border: 1px solid #3aa0ff;
+  background: rgba(2, 4, 12, 0.6); color: #a8e8ff; font-size: 18px; }
+.mobil #tlacitka { display: flex; }
+.dotyk { display: none; }
+.mobil .dotyk { display: block; }
+.mobil .klavesy { display: none; }
+#otoc { display: none; }
+@media (orientation: portrait) {
+  .mobil #otoc { display: block; position: fixed; bottom: 18px; width: 100%; text-align: center;
+    font-size: 11px; color: #ffe14a; text-shadow: 0 0 6px #ff9a1a; pointer-events: none; }
+}
+@media (max-width: 800px) {
+  #hud { top: max(8px, env(safe-area-inset-top)); left: 12px; right: 12px; }
+  .blok { font-size: 12px; gap: 4px; }
+  .popis { font-size: 8px; }
+  #zprava { font-size: 18px; }
+  h2 { font-size: 26px; }
+  .overlay p { font-size: 11px; }
+}
